@@ -28,7 +28,7 @@ export default function AboutMe() {
   const { fullName, nickname, dob, hobbies, education, email, phone, images } = PORTFOLIO_DATA.aboutMe;
 
   return (
-    <section id="about" className="px-6 md:px-8 py-24 bg-white/[0.01]">
+    <section id="about" className="px-6 md:px-8 py-10 md:py-24 bg-white/[0.01]">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,25 +51,34 @@ export default function AboutMe() {
           >
             <div className="glass-card p-6 md:p-8 space-y-6">
               <div>
-                <h3 className="text-brand-primary/40 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+                <h3 className="text-brand-primary/60 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
                   <User size={14} className="text-brand-accent" /> Họ và tên
                 </h3>
                 <p className="text-2xl font-bold">{fullName} <span className="text-brand-accent italic ml-2">({nickname})</span></p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 pb-4 border-b border-white/5">
                 <div>
-                  <h3 className="text-brand-primary/40 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+                  <h3 className="text-brand-primary/60 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
                     <Cake size={14} className="text-brand-accent" /> Ngày sinh
                   </h3>
-                  <p className="text-lg font-medium">{dob}</p>
+                  <p className="text-sm md:text-base font-medium">{dob}</p>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-2 border-b border-white/5">
-                {email && (
+                {phone && (
                   <div className="group cursor-pointer">
-                    <h3 className="text-brand-primary/40 text-xs font-bold uppercase tracking-widest mb-1 flex items-center gap-2 transition-colors group-hover:text-brand-accent">
+                    <h3 className="text-brand-primary/60 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2 transition-colors group-hover:text-brand-accent">
+                      <Phone size={14} className="text-brand-accent" /> Phone
+                    </h3>
+                    <p className="text-sm md:text-base font-bold transition-colors group-hover:text-brand-accent">
+                      {phone}
+                    </p>
+                  </div>
+                )}
+
+                {email && (
+                  <div className="group cursor-pointer col-span-2 md:col-span-1">
+                    <h3 className="text-brand-primary/60 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2 transition-colors group-hover:text-brand-accent">
                       <Mail size={14} className="text-brand-accent" /> Email
                     </h3>
                     <p className="text-sm font-medium break-all transition-colors group-hover:text-brand-accent">
@@ -77,35 +86,25 @@ export default function AboutMe() {
                     </p>
                   </div>
                 )}
-                {phone && (
-                  <div className="group cursor-pointer">
-                    <h3 className="text-brand-primary/40 text-xs font-bold uppercase tracking-widest mb-1 flex items-center gap-2 transition-colors group-hover:text-brand-accent">
-                      <Phone size={14} className="text-brand-accent" /> Phone
+
+                {education && education.length > 0 && (
+                  <div className="col-span-2 md:col-span-1">
+                    <h3 className="text-brand-primary/60 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+                      <MapPin size={14} className="text-brand-accent" /> Học vấn
                     </h3>
-                    <p className="text-lg font-bold transition-colors group-hover:text-brand-accent">
-                      {phone}
-                    </p>
+                    <ul className="space-y-1">
+                      {education.map((item, idx) => (
+                        <li key={idx} className="text-sm font-medium leading-relaxed">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </div>
 
-              {education && education.length > 0 && (
-                <div>
-                  <h3 className="text-brand-primary/40 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
-                    <MapPin size={14} className="text-brand-accent" /> Học vấn
-                  </h3>
-                  <ul className="space-y-2">
-                    {education.map((item, idx) => (
-                      <li key={idx} className="text-sm font-medium leading-relaxed">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
               <div>
-                <h3 className="text-brand-primary/40 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+                <h3 className="text-brand-primary/60 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
                   <Heart size={14} className="text-brand-accent" /> Sở thích
                 </h3>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -128,38 +127,32 @@ export default function AboutMe() {
             viewport={{ once: true }}
             className="w-full relative"
           >
-            <div className="relative group overflow-hidden" ref={constraintsRef}>
-              <div className="overflow-hidden cursor-grab active:cursor-grabbing rounded-3xl">
-                <motion.div 
-                  drag="x"
-                  dragConstraints={{ right: 0, left: -dragWidth }}
-                  ref={scrollRef}
-                  className="flex gap-4"
-                  style={{ width: 'max-content' }}
-                >
-                  {(images || []).map((img, i) => (
-                    <div key={i} className="w-[240px] md:w-[300px] aspect-[3/4] shrink-0 rounded-2xl overflow-hidden glass-card p-2 border-white/10">
-                      <img 
-                        src={img} 
-                        alt={`Ziva ${i}`} 
-                        className="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
-                        referrerPolicy="no-referrer"
-                        onLoad={updateWidth}
-                      />
-                    </div>
-                  ))}
-                </motion.div>
+            <div className="relative group w-full">
+              <div 
+                className="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 -mx-6 px-6 md:mx-0 md:px-0"
+              >
+                {(images || []).map((img, i) => (
+                  <div key={i} className="w-[85vw] md:w-[300px] snap-center shrink-0 aspect-[3/4] rounded-2xl overflow-hidden glass-card p-2 border-white/10">
+                    <img 
+                      src={img} 
+                      alt={`Ziva ${i}`} 
+                      className="w-full h-full object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                ))}
               </div>
               
-              <div className="mt-6 flex items-center justify-between px-2 text-brand-primary/40">
+              <div className="mt-4 flex items-center justify-between px-2 text-brand-primary/60">
                 <span className="text-[10px] uppercase font-bold tracking-widest flex items-center gap-2">
                    <div className="w-8 h-[1px] bg-brand-primary/20" />
-                   ← Kéo để xem thêm
+                   ← Vuốt để xem thêm
                 </span>
-                <span className="text-[10px] items-center gap-2 flex">
-                  <span className="w-1.5 h-1.5 bg-brand-accent rounded-full animate-pulse" />
-                  {images?.length || 0} Hình ảnh
-                </span>
+                <div className="flex gap-1.5 items-center">
+                  {(images || []).map((_, idx) => (
+                    <span key={idx} className={`w-1.5 h-1.5 rounded-full ${idx === 0 ? 'bg-brand-accent' : 'bg-brand-primary/20'}`} />
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

@@ -39,7 +39,7 @@ export default function Navbar() {
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 text-brand-primary/80"
+          className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-brand-primary/80"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

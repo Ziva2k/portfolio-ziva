@@ -4,7 +4,7 @@ import { PORTFOLIO_DATA } from '../constants';
 
 export default function Experience() {
   return (
-    <section id="experience" className="px-6 md:px-8 py-24 bg-white/[0.02]">
+    <section id="experience" className="px-6 md:px-8 py-10 md:py-24 bg-white/[0.02]">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -4,7 +4,7 @@ import { PORTFOLIO_DATA } from '../constants';
 
 export default function Skills() {
   return (
-    <section id="skills" className="px-6 md:px-8 py-24 border-t border-white/5">
+    <section id="skills" className="px-6 md:px-8 py-10 md:py-24 border-t border-white/5">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

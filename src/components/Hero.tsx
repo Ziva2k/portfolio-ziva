@@ -8,7 +8,7 @@ export default function Hero() {
       {/* Background Accents */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand-accent/20 blur-[120px] rounded-full" />
       <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full" />
-      
+
       <div className="max-w-5xl mx-auto w-full z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,19 +21,19 @@ export default function Hero() {
             {PORTFOLIO_DATA.role}
           </div>
         </motion.div>
-        
-        <motion.h1 
+
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-[1] md:leading-[0.85] tracking-tighter mb-8"
+          className="font-bold leading-[1] md:leading-[0.85] tracking-tighter mb-8"
         >
-          <span className="text-white/10 block mb-2">PORTFOLIO</span>
-          <span className="text-brand-accent block sm:inline leading-tight">
+          <span className="text-white/10 block mb-2 text-2xl md:text-5xl">PORTFOLIO</span>
+          <span className="text-brand-accent block sm:inline leading-none tracking-tight whitespace-nowrap text-[clamp(24px,6.5vw,96px)] md:text-8xl lg:text-9xl">
             {PORTFOLIO_DATA.name.toUpperCase()}
           </span>
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function Hero() {
         >
           {PORTFOLIO_DATA.bio}
         </motion.p>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,9 +57,9 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
-      
+
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
