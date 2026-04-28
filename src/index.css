@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #f5f5f0;
+  --color-brand-dark: #0a0a0a;
+  --color-brand-accent: #ff4e00;
+  
+  --font-display: "Inter", sans-serif;
+  --font-serif: "Georgia", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-brand-primary font-display selection:bg-brand-accent selection:text-white;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display font-bold tracking-tighter;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-brand-accent text-white rounded-full font-medium transition-all hover:scale-105 active:scale-95 hover:shadow-[0_0_20px_rgba(255,78,0,0.4)];
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border border-white/20 text-white rounded-full font-medium transition-all hover:bg-white/10 active:scale-95;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.mask-fade-bottom {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
